@@ -128,7 +128,7 @@ router.post('/api', async (req, res) => {
 })
     router.get('/', (req, res) => {
       res.set({ 'Content-Type': 'text/html' });
-  res.send('<h1>Hello from Express.js!</h1>');
+  res.sendFile('../pages/index.html');
 });
   app.use(express.static(__dirname + '/public'));
  app.use('/.netlify/functions/server', router);  // path must route to lambda
