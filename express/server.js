@@ -94,7 +94,6 @@ function parse (string ) {
         // console.log(flashcard);
     } while(line)
 }
-app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }));
 router.post('/api', async (req, res) => {
   // await console.log(req.body.text)
@@ -127,7 +126,9 @@ router.post('/api', async (req, res) => {
   // await res.send('It works')
   // parse(`Hello \nworld sd`)
 })
+  app.use(express.static(__dirname + '/public'));
  app.use('/.netlify/functions/server', router);  // path must route to lambda
+
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 module.exports = app;
 module.exports.handler = serverless(app);
