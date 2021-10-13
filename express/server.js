@@ -132,7 +132,7 @@ router.post('/api', async (req, res) => {
     res.write('<h1>Hello from Express.js!</h1>');
     res.end();
 });
-//   app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/public'));
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 module.exports = app;
