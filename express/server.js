@@ -126,14 +126,11 @@ router.post('/api', async (req, res) => {
   // await res.send('It works')
   // parse(`Hello \nworld sd`)
 })
-    router.get('/', (req, res) => {
-      res.set({ 'Content-Type': 'text/html' });
-  res.send("test");
-});
+
   app.use(express.static(__dirname + '/public'));
  app.use('/.netlify/functions/server', router);  // path must route to lambda
 
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../pages/index.html')));
 module.exports = app;
 module.exports.handler = serverless(app);
 // app.listen(port,'192.168.0.60', () => {
