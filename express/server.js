@@ -127,6 +127,7 @@ router.post('/api', async (req, res) => {
   // parse(`Hello \nworld sd`)
 })
   router.get('/', (req, res) => {
+     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.sendFile(path.join(__dirname, '../template.html'));
 });
 //   app.use(express.static(__dirname + '/public'));
