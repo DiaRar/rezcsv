@@ -3,6 +3,7 @@ const express = require('express')
 const ObjectsToCsv = require('objects-to-csv')
 require('console-stamp')(console, '[HH:MM:ss]');
 const fs = require('fs');
+var text = fs.readFileSync("../template.html", "utf-8");
 const app = express()
 const port = 5000
 let ok = true;
@@ -128,7 +129,8 @@ router.post('/api', async (req, res) => {
 })
   router.get('/', (req, res) => {
      res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.sendFile(path.join(__dirname, '../template.html'));
+    res.write(text);
+    res.end();
 });
 //   app.use(express.static(__dirname + '/public'));
  app.use('/.netlify/functions/server', router);  // path must route to lambda
