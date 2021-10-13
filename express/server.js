@@ -127,9 +127,8 @@ router.post('/api', async (req, res) => {
   // parse(`Hello \nworld sd`)
 })
     router.get('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Hello from Express.js!</h1>');
-  res.end();
+      res.set({ 'Content-Type': 'text/html' });
+  res.send('<h1>Hello from Express.js!</h1>');
 });
   app.use(express.static(__dirname + '/public'));
  app.use('/.netlify/functions/server', router);  // path must route to lambda
