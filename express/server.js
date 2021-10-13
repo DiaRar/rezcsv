@@ -6,7 +6,7 @@ const fs = require('fs');
 const app = express()
 const port = 5000
 let ok = true;
-
+const router = express.Router();
 const exemplu = {
   activ: 1,
   pachet: 1,
@@ -96,7 +96,7 @@ function parse (string ) {
 }
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }));
-app.post('/api', async (req, res) => {
+router.post('/api', async (req, res) => {
   // await console.log(req.body.text)
   // console.log(req.body.text)
   let id = parseInt(req.body.id)
