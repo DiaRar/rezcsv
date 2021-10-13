@@ -127,7 +127,7 @@ router.post('/api', async (req, res) => {
   // parse(`Hello \nworld sd`)
 })
   router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../template.html'));
 });
 //   app.use(express.static(__dirname + '/public'));
  app.use('/.netlify/functions/server', router);  // path must route to lambda
