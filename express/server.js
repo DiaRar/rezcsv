@@ -108,30 +108,17 @@ router.post('/api', async (req, res) => {
   let nume = req.body.nume
   if(!nume) nume = 'list';
   
+  let bom = "\ufeff"
   let csvcontent = await csv.toString();
-  fs.writeFile('./csv/' + nume + '.csv', "\ufeff" + csvcontent, (err) => {
-    if (err)
-      throw err;
-    console.log("The file was succesfully saved with UTF-8 with BOM!");
-    res.download('./csv/' + nume + '.csv', nume + '.csv', function (err) {
-      fs.unlink('./csv/' + nume + '.csv', function () {
-        console.log("Deleted: " + nume);
-      });
-    });
-
-  })
-  
+  csvcontent = bom.concat(csvcontent)
+  res.set({'Content-Disposition': 'attachment; filename='+nume+'.csv','Content-type': 'text/csv'});
+  res.send(csvcontent);
   // csv.toDisk('./csv/'+nume+'.csv', {append: false, bom: true})
   test = [];
   ok = 2;
   // await res.send('It works')
   // parse(`Hello \nworld sd`)
 })
-  router.get('/', (req, res) => {
-     res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write('<h1>Hello from Express.js!</h1>');
-    res.end();
-});
   app.use(express.static(__dirname + '/public'));
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
