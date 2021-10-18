@@ -93,7 +93,7 @@ function parse (string ) {
         // console.log(flashcard);
     } while(line)
 }
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 router.post('/api', async (req, res) => {
   // await console.log(req.body.text)
   // console.log(req.body.text)
