@@ -17,7 +17,7 @@ let test = [];
 const re = /.+/g;
 const paragraph = "<p>";
 const re2 = /^([a-z][.])/m;
-const re3 = /\d+[.][ ]?/;
+const re3 = /\d+[.][ ]?[\t]?/;
 function parseQ(strline, obj) {
   let a = re2.exec(strline)
   let index;
