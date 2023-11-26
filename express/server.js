@@ -34,7 +34,7 @@ function parseQ(strline, obj) {
             // console.log("ok")
             if (strline.length > 4) {
                 const regex = /R([1-9]+)([:.]) ?/;
-                let aux = strline.split(regex)[3];
+                let aux = strline.replace(regex, "");
                 if (aux === " ") return obj;
                 strline = aux;
                 a = re2.exec(strline);
@@ -60,18 +60,10 @@ function parseQ(strline, obj) {
             if (!index) {
                 verif = strline;
             } else {
-                // console.log(obj.ras)
                 index = index.toString().length + index.index;
                 verif = strline.substring(index);
             }
-            // console.log(obj);
-            // console.log(test);
-            // console.log(exemplu)
-
             obj.enunt = obj.enunt.concat(verif);
-
-            // console.log(obj)
-            // console.log(test)
         }
     }
     return obj;
@@ -83,11 +75,7 @@ function parse(string) {
         line = re.exec(string);
         if (!line) return;
         strline = line.toString();
-        // console.log(flashcard)
-        // console.log(strline)
         flashcard = parseQ(strline, flashcard);
-        // console.log(flashcard)
-        // console.log(flashcard);
     } while (line);
 }
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
@@ -116,6 +104,3 @@ app.use("/.netlify/functions/server", router); // path must route to lambda
 app.use("/", (req, res) => res.sendFile(path.join(__dirname, "../index.html")));
 module.exports = app;
 module.exports.handler = serverless(app);
-// app.listen(port, "z", () => {
-//     console.log(`Example app listening at http://192.168.0.60:${port}`);
-// });
