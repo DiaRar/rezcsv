@@ -33,8 +33,8 @@ function parseQ(strline, obj) {
             ok = true;
             // console.log("ok")
             if (strline.length > 4) {
-                const regex = /([:.]) ?/g;
-                let aux = strline.split(regex)[1];
+                const regex = /R([1-9]+)([:.]) ?/;
+                let aux = strline.split(regex)[3];
                 if (aux === " ") return obj;
                 strline = aux;
                 a = re2.exec(strline);
@@ -44,7 +44,6 @@ function parseQ(strline, obj) {
                         obj.ras = obj.ras.concat(
                             paragraph.concat(element, "</p>")
                         );
-                        // console.log(element);
                     });
                     return obj;
                 }
@@ -113,10 +112,10 @@ router.post("/api", async (req, res) => {
     test = [];
     ok = 2;
 });
-app.use("/.netlify/functions/server", router); // path must route to lambda
-app.use("/", (req, res) => res.sendFile(path.join(__dirname, "../index.html")));
+app.use("/", router); // path must route to lambda
+// app.use("/", (req, res) => res.sendFile(path.join(__dirname, "../index.html")));
 module.exports = app;
 module.exports.handler = serverless(app);
-// app.listen(port,'192.168.0.60', () => {
-//   console.log(`Example app listening at http://192.168.0.60:${port}`)
-// })
+// app.listen(port, "z", () => {
+//     console.log(`Example app listening at http://192.168.0.60:${port}`);
+// });

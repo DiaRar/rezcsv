@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" type="text/css" href="css/global.css" />
-
-	</head>
-	<body>
-<div class = "container">
-    <form action="/.netlify/functions/server/api" method="post">
-  <input type="text" class="input" name="nume" placeholder="Numele fisierului">
-  <input type="text" class="input" name="id" placeholder="Id Pachet">
-    <textarea name="text" id= "textarea" placeholder="Lipeste intrebarile aici"></textarea>
-		<div class = "btncon"><button type="submit" class="button button--pan"><span>Upload</span></button></div>
-        </form>
-	</div>
-	</body>
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+    </head>
+    <body>
+        <div class="container">
+            <form action="http://127.0.0.1:3000/api" method="post">
+                <input
+                    type="text"
+                    class="input"
+                    name="nume"
+                    placeholder="Numele fisierului"
+                />
+                <input
+                    type="text"
+                    class="input"
+                    name="id"
+                    placeholder="Id Pachet"
+                />
+                <textarea
+                    name="text"
+                    id="textarea"
+                    placeholder="Lipeste intrebarile aici"
+                ></textarea>
+                <div class="btncon">
+                    <button type="submit" class="button button--pan">
+                        <span>Upload</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
