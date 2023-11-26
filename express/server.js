@@ -33,7 +33,7 @@ function parseQ(strline, obj) {
             ok = true;
             // console.log("ok")
             if (strline.length > 4) {
-                const regex = /R([1-9]+)([:.]) ?/;
+                const regex = /R([0-9]+)([:.]) ?/;
                 let aux = strline.replace(regex, "");
                 if (aux === " ") return obj;
                 strline = aux;
